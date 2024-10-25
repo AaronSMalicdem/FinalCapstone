@@ -36,7 +36,7 @@
         transform: translateX(-50%);
         width: 80%;
         max-width: 800px;
-        padding: 0px 5px; /* Reduced padding for a thinner navbar */
+        padding:5px; /* Reduced padding for a thinner navbar */
         background: rgba(255, 255, 255, 0.1);
         border-radius: 100px; /* Adjusted for a slimmer look */
         backdrop-filter: blur(10px);
