@@ -31,7 +31,7 @@
             <!-- Right Side: Icons -->
             <div>
                 <a href="#" class="text-white mx-2"><i class="fas fa-store"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fas fa-user"></i></a>
+                <a href="{{route('admin.users.index')}}" class="text-white mx-2"><i class="fas fa-user"></i></a>
                 <a href="#" class="text-white mx-2"><i class="fas fa-cog"></i></a>
                 @if (Auth::check())
                     <a href="{{ route('logout') }}" class="text-white mx-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

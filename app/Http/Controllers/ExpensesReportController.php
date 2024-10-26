@@ -23,6 +23,8 @@ class ExpensesReportController extends Controller
     $sales = []; 
     $profits = []; // New array for profit
 
+    $profitstwo = []; // New array for profit
+
 
     // Set default dates to the last 7 days if no request data is available
     if (!$request->isMethod('post')) {
@@ -79,18 +81,31 @@ class ExpensesReportController extends Controller
         ];
     }
 
+    foreach ($sales as $sale) {
+        $date = $sale['date'];
+        $expenseForDate = collect($expenses)->firstWhere('date', $date);
+
+        $totalExpensesForDate = $expenseForDate ? $expenseForDate['total_expenses'] : 0;
+        $profitForDate = $sale['total_sales'] - $totalExpensesForDate;
+
+        $profitstwo[] = [
+            'date' => $date,
+            'profit' => $profitForDate,
+        ];
+    }
+
 
     // Calculate total sales for the specified date range
     $totalSales = array_sum(array_column($sales, 'total_sales')); // Assuming 'amount' is the key for sales amount
-
+    $totalSalestwo = array_sum(array_column($sales, 'total_sales'));
     // Calculate total expenses for the specified date range
     $totalExpenses = array_sum(array_column($expenses, 'total_expenses')); // Change this line to sum the expenses
-
+    $totalExpensestwo = array_sum(array_column($expenses, 'total_expenses'));
     // Fetch comments from Google Sheets
     $comments = $this->googleSheetsService->getComments();
 
     // Return the view with expenses, sales, total sales, and comments data
-    return view('admin.expenses-report', compact('expenses', 'sales', 'totalSales', 'comments', 'totalExpenses', 'profits'));
+    return view('admin.expenses-report', compact('expenses', 'sales', 'totalSales','totalSalestwo', 'comments', 'totalExpenses', 'profits','totalExpensestwo', 'profitstwo'));
 }
 
 

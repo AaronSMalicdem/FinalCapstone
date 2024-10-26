@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-           /* overflow:hidden; */
+            overflow:hidden;
            
         }
 
@@ -238,7 +238,7 @@
     /* footer here */
     .glassmorphic-footer {
     position: relative;
-    bottom: 400px;
+    bottom: 580px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -296,6 +296,7 @@
     right: 40px;
 }
 
+
 .modal-bg {
     display: none;
     position: fixed;
@@ -329,6 +330,28 @@
 .modal-content input[type="date"] {
     color: #000; /* Set input text color to black for visibility */
 }
+
+/* Comparison Card */
+.comparison {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        color: white;
+        margin: 10px;
+        width: 525px; /* Adjusted width */
+        height: 160px; /* Set a specific height */
+        position: relative;
+        right: 225px; /* Move the container 30px to the right */
+        bottom: 610px; /* Move the container 30px to the right */
+    }
+
+
+    /*left modal*/
+
+   
 
 
     </style>
@@ -391,16 +414,84 @@
                     <div class="d-flex align-items-center mb-1">
                         <h4 class="mb-0 total-orders-title">Target Sales</h4>
                    </div>
-               </div>
-
-    
-
-   
-
-
+               </div>  
                
+               <div class="comparison d-flex flex-column align-items-start p-3 mb-4">
+        <div class="d-flex justify-content-between">
+            <!-- Left Column -->
+            <div class="d-flex flex-column align-items-start me-3">
+        <div class="glass-bg">
+        <select id="dateFilterLeft" onchange="handleFilterChangeleft()">
+            <option value="thisweek" selected>This Week</option>
+            <option value="today">Today</option>
+            <option value="yesterday">Yesterday</option>
+            <option value="last3days">Last 3 Days</option>
+            <option value="last5days">Last 5 Days</option>
+            <option value="last7days">Last 7 Days</option>
+            <option value="lastweek">Last Week</option>
+            <option value="thismonth">This Month</option>
+            <option value="lastmonth">Last Month</option>
+            <option value="thisyear">This Year</option>
+            <option value="lastyear">Last Year</option>
+            <option value="overall">Overall</option>
+            <option value="custom">Custom</option>
+        </select>
+    </div>
+    <div class="mt-2">
+        <i class="fas fa-dollar-sign"></i> Total Profit:  ₱ 000,000
+    </div>
+    <div>
+        <i class="fas fa-chart-line"></i> Total Sales:  ₱ 000,000
+    </div>
+    <div>
+        <i class="fas fa-money-bill-wave"></i> Total Expenses: ₱ 000,000
+    </div>
+    <div>
+        <i class="fas fa-shopping-cart"></i> Total Orders:
     </div>
 </div>
+
+            
+            <!-- Vertical Divider Line -->
+            <div style="border-left: 2px solid white; height: 100%; margin: 0 15px;"></div>
+
+            <!-- Right Column -->
+            <div class="d-flex flex-column align-items-start">
+                <select id="dateFilterRight" onchange="handleFilterChangeright()">
+                    <option value="thisweek" selected>This Week</option>
+                    <option value="today">Today</option>
+                    <option value="yesterday">Yesterday</option>
+                    <option value="last3days">Last 3 Days</option>
+                    <option value="last5days">Last 5 Days</option>
+                    <option value="last7days">Last 7 Days</option>
+                    <option value="lastweek">Last Week</option>
+                    <option value="thismonth">This Month</option>
+                    <option value="lastmonth">Last Month</option>
+                    <option value="thisyear">This Year</option>
+                    <option value="lastyear">Last Year</option>
+                    <option value="overall">Overall</option>
+                    <option value="custom">Custom</option>
+                </select>
+                <div class="mt-2">
+                    <i class="fas fa-dollar-sign"></i> Total Profit:  ₱ 000,000
+                </div>
+                <div>
+                    <i class="fas fa-chart-line"></i> Total Sales:  ₱ 000,000
+                </div>
+                <div>
+                    <i class="fas fa-money-bill-wave"></i> Total Expenses:  ₱ 000,000
+                </div>
+                <div>
+                    <i class="fas fa-shopping-cart"></i> Total Orders:
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
 
 
 <div class="glassmorphic-footer">
@@ -409,7 +500,7 @@
 
     <!-- Filter Dropdown with Custom Date Option -->
     <div class="dropdown">
-        <select id="dateFilter" onchange="handleFilterChange()">
+        <select id="dateFilter" onchange="handleFilterChange()" class="dropdownforModal">
             <option value="today">Today</option>
             <option value="yesterday">Yesterday</option>
             <option value="last3days">Last 3 Days</option>
@@ -453,11 +544,63 @@
         </form>
     </div>
 </div>
+
+
+<div class="modal-bg" id="customDateModalLeft">
+    <div class="modal-content">
+        <h5>Select Date Range</h5>
+        <form action="{{ route('admin.expenses-report') }}" method="POST">
+            @csrf
+            <div class="form-group mb-3">
+                <label for="start_date" class="form-label text-white">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" class="form-control"
+                       value="{{ request('start_date', \Carbon\Carbon::now()->subDays(6)->toDateString()) }}" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="end_date" class="form-label text-white">End Date:</label>
+                <input type="date" id="end_date" name="end_date" class="form-control"
+                       value="{{ request('end_date', \Carbon\Carbon::now()->toDateString()) }}" required>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" onclick="closeModalleft()" class="btn btn-secondary me-2">Cancel</button>
+                <button type="submit" class="btn btn-primary">Generate Report</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal-bg" id="customDateModalRight">
+    <div class="modal-content">
+        <h5>Select Date Range</h5>
+        <form action="{{ route('admin.expenses-report') }}" method="POST">
+            @csrf
+            <div class="form-group mb-3">
+                <label for="start_date" class="form-label text-white">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" class="form-control"
+                       value="{{ request('start_date', \Carbon\Carbon::now()->subDays(6)->toDateString()) }}" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="end_date" class="form-label text-white">End Date:</label>
+                <input type="date" id="end_date" name="end_date" class="form-control"
+                       value="{{ request('end_date', \Carbon\Carbon::now()->toDateString()) }}" required>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" onclick="closeModalright()" class="btn btn-secondary me-2">Cancel</button>
+                <button type="submit" class="btn btn-primary">Generate Report</button>
+            </div>
+        </form>
+    </div>
+</div>
+
   <!-- for chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- for dropdown -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- JavaScript for PDF Generation, Filter Handling, and Modal Toggle -->
+
+
+
+
 <script>
     function generatePDF() {
         // Implement PDF generation logic here
@@ -483,7 +626,29 @@
 </script>
 
 
+<script>
+      function handleFilterChangeleft() {
+        const filter = document.getElementById('dateFilterLeft').value;
+        if (filter === 'custom') {
+            document.getElementById('customDateModalLeft').style.display = 'flex'; 
+        }
+    }
 
+    function handleFilterChangeright() {
+        const filter = document.getElementById('dateFilterRight').value;
+        if (filter === 'custom') {
+            document.getElementById('customDateModalRight').style.display = 'flex'; 
+        }
+    }
+
+    function closeModalleft() {
+        document.getElementById('customDateModalLeft').style.display = 'none';
+    }
+
+    function closeModalright() {
+        document.getElementById('customDateModalRight').style.display = 'none';
+    }
+</script>
 
 
 
