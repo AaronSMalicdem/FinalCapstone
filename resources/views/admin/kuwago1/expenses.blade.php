@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Dashboard</title>
+    <title>Expenses Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -53,12 +53,11 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     color: white;
     margin: 10px;
-    width: 550px; /* Set a fixed width */
+    width: 500px; /* Set a fixed width */
     height: 250px; /* Set a fixed height */
     position: fixed;
-    left: 213px;
+    left: 465px;
     bottom: 221px;
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,11 +65,8 @@
 
 #combinedChart {
     width: 100%; /* Let the canvas take full width of the parent */
-    height: 100%; /* Let the canvas take full height of the parent */
+    height: 90%; /* Let the canvas take full height of the parent */
 }
-
-
-
 
 
 
@@ -137,8 +133,8 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
-        height: 250px; /* Set a specific height */
+        width: 430px; /* Adjusted width */
+        height: 170px; /* Set a specific height */
         position: relative;
         right: 650px; /* Move the container 30px to the right */
         bottom:23px;
@@ -162,41 +158,7 @@
     color: #fff; /* White text color */
 }
 
-/* Common styles for both Sales and Expenses */
-.totalExpenses {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    color: white;
-    margin: 10px;
-    max-width: 185px; /* Adjusted width */
-    height: 250px; /* Set a specific height */
-    position: relative;
-    left: 115px; /* Move the container 30px to the right */
-    bottom: 540px; /* Move the container 30px to the right */
-}
 
-
-/* Icon and Text Styling */
-.expenses-icon {
-    font-size: 1.5rem; /* Set icon size */
-    color: #fff; /* Icon color */
-}
-
-.total-expenses {
-    font-size: 25px; /* Font size for total amounts */
-    font-weight: bold; /* Bold font for total amounts */
-    color: #fff; /* White text color */
-    margin-top: 10px; /* Add some height spacing above the total amounts */
-}
-
-.total-expenses-title {
-    font-size: 1rem; /* Reduced font size for the titles */
-    color: #fff; /* White text color */
-}      
  /* Total Sales Style */
  .totalProfit{
         background: rgba(255, 255, 255, 0.2);
@@ -207,11 +169,12 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        width: 600px; /* Adjusted width */
-        height: 200px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom: 45px;
+        width: 430px; /* Adjusted width */
+        height: 245px; /* Set a specific height */
+        position: fixed;
+        left:15px; /* Move the container 30px to the right */
+        bottom:-9px;
+       
        
     }
    
@@ -359,11 +322,15 @@
     color: #000; /* Set input text color to black for visibility */
 }
 
-/* Comparison Card */
+.recentPurchased{
+    color:white;
+    position:fixed;
+    left:29px;
+    right:0px;
+    top:200px;
+    font-weight:bold;
 
-
-
-    /*left modal*/
+}
 
    
 
@@ -383,7 +350,7 @@
                 <div class="glass-card">
                     <div class="card-body">
                         <!-- Combined Chart for Expenses, Sales, and Profit -->
-                        <canvas id="combinedChart" style="max-width: 100%; height: 250px;"></canvas>
+                        <canvas id="combinedChart" style="max-width: 100%; height: 230px;"></canvas>
                     </div>
                 </div>
             </div>
@@ -396,6 +363,10 @@
                     </div>
                 </div>
 
+                <div>
+                    <h5 class="recentPurchased">Recently Purchased</h3>
+                </div>
+
                 <!-- Total Profit Glass Card -->
                 <div class="totalProfit d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
@@ -404,11 +375,7 @@
                 </div>
 
                 <!-- Total Expenses Glass Card -->
-                <div class="totalExpenses d-flex flex-column align-items-start p-3 mb-4">
-                    <div class="d-flex align-items-center mb-1">
-                        <h4 class="mb-0 total-expenses-title">Least-selling Products</h4>
-                    </div>
-                </div>
+              
 
                 <!-- Total Orders Glass Card (Newly Added) -->
                 <div class="totalOrders d-flex flex-column align-items-start p-3 mb-4">
@@ -455,7 +422,7 @@
 <div class="modal-bg" id="customDateModal">
     <div class="modal-content">
         <h5>Select Date Range</h5>
-        <form action="{{ route('admin.kuwago1.sales') }}" method="POST">
+        <form action="{{ route('admin.kuwago1.expenses') }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="start_date" class="form-label text-white">Start Date:</label>
@@ -530,7 +497,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Total Sales',
+                    label: 'Total Expenses',
                     data: salesData,
                     backgroundColor: 'rgba(54, 162, 235, 0.7)', // Bar color for sales
                     borderColor: 'rgba(54, 162, 235, 1)',

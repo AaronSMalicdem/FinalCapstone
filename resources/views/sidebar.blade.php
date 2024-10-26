@@ -98,7 +98,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->routeIs('expenses.route.name') ? 'active' : '' }}">
+            <a href="{{route('admin.kuwago1.expenses')}}" class="nav-link {{ request()->routeIs('admin.kuwago1.expenses') ? 'active' : '' }}">
                 <i class="fa fa-wallet"></i><span>Expenses</span>
             </a>
         </li>

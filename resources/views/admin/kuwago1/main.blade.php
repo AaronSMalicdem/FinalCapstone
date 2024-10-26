@@ -381,7 +381,6 @@
                         <i class="fas fa-chart-line sales-icon me-2"></i>
                         <h4 class="mb-0 total-sales-title">Total Sales</h4>
                     </div>
-                    <h2 class="total-sales">₱ {{ number_format($totalSales, 2) }}</h2>
                 </div>
 
                 <!-- Total Profit Glass Card -->
@@ -390,7 +389,6 @@
                         <i class="fas fa-chart-line profit-icon me-2"></i>
                         <h4 class="mb-0 total-profit-title">Total Profit</h4>
                     </div>
-                    <h2 class="total-profit">₱ {{ number_format($totalSales - $totalExpenses, 2) }}</h2>
                 </div>
 
                 <!-- Total Expenses Glass Card -->
@@ -399,7 +397,6 @@
                         <i class="fas fa-money-bill-wave expenses-icon me-2"></i>
                         <h4 class="mb-0 total-expenses-title">Total Expenses</h4>
                     </div>
-                    <h2 class="total-expenses">₱ {{ number_format($totalExpenses, 2) }}</h2>
                 </div>
 
                 <!-- Total Orders Glass Card (Newly Added) -->

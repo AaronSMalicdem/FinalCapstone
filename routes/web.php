@@ -26,6 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+//this is for authentication
 Route::middleware(['auth'])->group(function () {
     
     // Admin dashboard route
@@ -50,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+
+//this is for USER CRUD
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index')->middleware('role:admin');
@@ -60,8 +63,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy')->middleware('role:admin');
 
 });
+
+
+//this is for chart views
 Route::match(['get', 'post'], '/admin/kuwago1/main', [ExpensesReportController::class, 'index'])->name('admin.kuwago1.main');
 Route::match(['get', 'post'], '/admin/kuwago1/sales', [ExpensesReportController::class, 'sales'])->name('admin.kuwago1.sales');
+Route::match(['get', 'post'], '/admin/kuwago1/expenses', [ExpensesReportController::class, 'expenses'])->name('admin.kuwago1.expenses');
 
+
+//this is for profile update
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
