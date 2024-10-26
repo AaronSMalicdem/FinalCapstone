@@ -28,7 +28,7 @@
            
         }
 
-         canvas {
+         /* canvas {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 15px;
@@ -38,11 +38,41 @@
             color: white;
             margin: 10px;
             width: 590px;
-            position: relative;
+            position: fixed;
             left: 141px;
             bottom:40px;
             
-        }
+        } */
+
+        .glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: white;
+    margin: 10px;
+    width: 550px; /* Set a fixed width */
+    height: 250px; /* Set a fixed height */
+    position: fixed;
+    left: 213px;
+    bottom: 221px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#combinedChart {
+    width: 100%; /* Let the canvas take full width of the parent */
+    height: 100%; /* Let the canvas take full height of the parent */
+}
+
+
+
+
+
 
         /* Headings and text */
         h3.card-title {
