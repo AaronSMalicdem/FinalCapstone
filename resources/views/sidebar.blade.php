@@ -88,7 +88,7 @@
 <div id="sidebar" class="glass-sidebar collapsed">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="#" class="nav-link active"><i class="fa fa-th-large"></i><span>General</span></a>
+            <a href="{{route('admin.kuwago1.main')}}" class="nav-link active"><i class="fa fa-th-large"></i><span>General</span></a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link"><i class="fa fa-chart-line"></i><span>Sales</span></a>

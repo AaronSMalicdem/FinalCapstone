@@ -105,7 +105,7 @@ class ExpensesReportController extends Controller
     $comments = $this->googleSheetsService->getComments();
 
     // Return the view with expenses, sales, total sales, and comments data
-    return view('admin.expenses-report', compact('expenses', 'sales', 'totalSales','totalSalestwo', 'comments', 'totalExpenses', 'profits','totalExpensestwo', 'profitstwo'));
+    return view('admin.kuwago1.main', compact('expenses', 'sales', 'totalSales','totalSalestwo', 'comments', 'totalExpenses', 'profits','totalExpensestwo', 'profitstwo'));
 }
 
 

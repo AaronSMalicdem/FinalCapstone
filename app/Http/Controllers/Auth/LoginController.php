@@ -42,7 +42,7 @@ class LoginController extends Controller
 {
     // Check the user's role and redirect accordingly
     if ($user->role->name === 'admin') {
-        return redirect('/admin/expenses-report');
+        return redirect('/admin/kuwago1/main');
     }
 
     if ($user->role->name === 'kuwago_manager') {

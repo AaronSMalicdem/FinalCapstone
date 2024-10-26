@@ -60,6 +60,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy')->middleware('role:admin');
 
 });
-Route::match(['get', 'post'], '/admin/expenses-report', [ExpensesReportController::class, 'index'])->name('admin.expenses-report');
+Route::match(['get', 'post'], '/admin/kuwago1/main', [ExpensesReportController::class, 'index'])->name('admin.kuwago1.main');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');

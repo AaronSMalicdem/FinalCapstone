@@ -525,7 +525,7 @@
 <div class="modal-bg" id="customDateModal">
     <div class="modal-content">
         <h5>Select Date Range</h5>
-        <form action="{{ route('admin.expenses-report') }}" method="POST">
+        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="start_date" class="form-label text-white">Start Date:</label>
@@ -549,7 +549,7 @@
 <div class="modal-bg" id="customDateModalLeft">
     <div class="modal-content">
         <h5>Select Date Range</h5>
-        <form action="{{ route('admin.expenses-report') }}" method="POST">
+        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="start_date" class="form-label text-white">Start Date:</label>
@@ -572,7 +572,7 @@
 <div class="modal-bg" id="customDateModalRight">
     <div class="modal-content">
         <h5>Select Date Range</h5>
-        <form action="{{ route('admin.expenses-report') }}" method="POST">
+        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="start_date" class="form-label text-white">Start Date:</label>
@@ -723,9 +723,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
