@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow:hidden;
+            /* overflow:hidden; */
            
         }
 
@@ -119,6 +119,7 @@
         backdrop-filter: blur(20px);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
+        position: fixed;
        
     }
 
@@ -135,9 +136,9 @@
         margin: 10px;
         width: 430px; /* Adjusted width */
         height: 170px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom:23px;
+        position: fixed;
+        right: 536px; /* Move the container 30px to the right */
+        top:10px;
        
     }
 
@@ -174,8 +175,7 @@
         position: fixed;
         left:15px; /* Move the container 30px to the right */
         bottom:-9px;
-       
-       
+        
     }
    
 
@@ -201,12 +201,11 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        width: 338px; /* Adjusted width */
+        width: 495px; /* Adjusted width */
         height: 200px; /* Set a specific height */
-        position: relative;
-        
-        left:-37px;
-        bottom: 560px; /* Move the container 30px to the right */
+        position: fixed;
+        right: 15px; /* Move the container 30px to the right */
+        bottom:-7px;
     }
 
     /*Target Sales*/
@@ -228,8 +227,8 @@
 
     /* footer here */
     .glassmorphic-footer {
-    position: relative;
-    bottom: 530px;
+    position: fixed;
+    bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -351,6 +350,8 @@
                     <div class="card-body">
                         <!-- Combined Chart for Expenses, Sales, and Profit -->
                         <canvas id="combinedChart" style="max-width: 100%; height: 230px;"></canvas>
+                        <h4 class="mb-0 total-orders-title" style="position:fixed; top:10px;">Top-selling Products</h4>
+
                     </div>
                 </div>
             </div>
@@ -359,7 +360,7 @@
                 <!-- Total Sales Glass Card -->
                 <div class="totalSales d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
-                        <h4 class="mb-0 total-sales-title">Total Sales</h4>
+                        <h4 class="mb-0 total-sales-title">Total Expenses</h4>
                     </div>
                 </div>
 
@@ -369,10 +370,26 @@
 
                 <!-- Total Profit Glass Card -->
                 <div class="totalProfit d-flex flex-column align-items-start p-3 mb-4">
-                    <div class="d-flex align-items-center mb-1">
-                        <h4 class="mb-0 total-profit-title">Sales By Category</h4>
-                    </div>
-                </div>
+    <h4 class="mb-2" class="foodcat">Food/Beverages:</h4>
+    <div class="item d-flex justify-content-between w-100 mb-1">
+        <span>Water</span>
+        <span>10</span>
+    </div>
+    <div class="item d-flex justify-content-between w-100 mb-1">
+        <span>Coke</span>
+        <span>20</span>
+    </div>
+    <div class="item d-flex justify-content-between w-100 mb-1">
+        <span>Milk</span>
+        <span>30</span>
+    </div>
+    <hr style="width: 100%; border-color: rgba(255, 255, 255, 0.5);">
+    <div class="total d-flex justify-content-between w-100 mb-1">
+        <strong>Total:</strong>
+        <strong>60</strong>
+    </div>
+</div>
+
 
                 <!-- Total Expenses Glass Card -->
               

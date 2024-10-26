@@ -37,10 +37,10 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             color: white;
             margin: 10px;
-            max-width: 500px;
-            position: relative;
-            left: 360px;
-            bottom:40px;
+            width: 558px;
+            position: fixed;
+            right: 10px;
+            top:7px;
             
         }
 
@@ -93,6 +93,7 @@
         backdrop-filter: blur(20px);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
+        position: fixed;
        
     }
 
@@ -107,11 +108,11 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
-        height: 150px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom:23px;
+        width: 185px; /* Adjusted width */
+        height: 158px; /* Set a specific height */
+        position: fixed;
+        top: 7px; /* Move the container 30px to the right */
+        left:10px;
        
     }
 
@@ -142,11 +143,11 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     color: white;
     margin: 10px;
-    max-width: 185px; /* Adjusted width */
-    height: 150px; /* Set a specific height */
-    position: relative;
-    right: 445px; /* Move the container 30px to the right */
-    bottom: 390px; /* Move the container 30px to the right */
+    width: 185px; /* Adjusted width */
+    height: 158px; /* Set a specific height */
+    position: fixed;
+    left: 10px; /* Move the container 30px to the right */
+    top: 180px; /* Move the container 30px to the right */
 }
 
 
@@ -177,11 +178,11 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
-        height: 150px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom: 45px;
+        width: 185px; /* Adjusted width */
+        height: 158px; /* Set a specific height */
+        position: fixed;
+        top: 7px; /* Move the container 30px to the right */
+        left: 210px;
        
     }
     .profit-icon{
@@ -211,11 +212,16 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
-        height: 150px; /* Set a specific height */
-        position: relative;
-        right: 445px; /* Move the container 30px to the right */
-        bottom: 412px; /* Move the container 30px to the right */
+        width: 185px; /* Adjusted width */
+        height: 158px; /* Set a specific height */
+        position: fixed;
+        left: 210px; /* Move the container 30px to the right */
+        top: 180px; /* Move the container 30px to the right */
+    }
+
+    .total-orders-title {
+    font-size: 1rem; /* Reduced font size for the titles */
+    color: #fff; /* White text color */
     }
 
     /*Target Sales*/
@@ -228,17 +234,17 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        width: 390px; /* Adjusted width */
+        width: 385px; /* Adjusted width */
         height: 120px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom: 420px; /* Move the container 30px to the right */
+        position: fixed;
+        left: 10px; /* Move the container 30px to the right */
+        bottom: -7px; /* Move the container 30px to the right */
     }
 
     /* footer here */
     .glassmorphic-footer {
-    position: relative;
-    bottom: 580px;
+        position: fixed;
+        bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -341,16 +347,20 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        width: 525px; /* Adjusted width */
-        height: 160px; /* Set a specific height */
-        position: relative;
-        right: 225px; /* Move the container 30px to the right */
-        bottom: 610px; /* Move the container 30px to the right */
+        width: 558px; /* Adjusted width */
+        height: 170px; /* Set a specific height */
+        position: fixed;
+        right: 10px; /* Move the container 30px to the right */
+        bottom: -7px; /* Move the container 30px to the right */
     }
 
-
-    /*left modal*/
-
+.compareWith{
+    color:white;
+    position:fixed;
+    right:440px;
+    bottom:200px;
+    font-weight:bold;
+}
    
 
 
@@ -369,7 +379,7 @@
                 <div class="glass-card">
                     <div class="card-body">
                         <!-- Combined Chart for Expenses, Sales, and Profit -->
-                        <canvas id="combinedChart" style="max-width: 100%; height: 300px;"></canvas>
+                        <canvas id="combinedChart" style="max-width: 100%; height: 230px;"></canvas>
                     </div>
                 </div>
             </div>
@@ -381,6 +391,9 @@
                         <i class="fas fa-chart-line sales-icon me-2"></i>
                         <h4 class="mb-0 total-sales-title">Total Sales</h4>
                     </div>
+                    <div>
+                        <h4 style="font-size:30px; margin-top:20px;">₱ 00.00</h4>
+                        </div>
                 </div>
 
                 <!-- Total Profit Glass Card -->
@@ -389,6 +402,9 @@
                         <i class="fas fa-chart-line profit-icon me-2"></i>
                         <h4 class="mb-0 total-profit-title">Total Profit</h4>
                     </div>
+                    <div>
+                        <h4 style="font-size:30px; margin-top:20px;">₱ 00.00</h4>
+                        </div>
                 </div>
 
                 <!-- Total Expenses Glass Card -->
@@ -397,6 +413,9 @@
                         <i class="fas fa-money-bill-wave expenses-icon me-2"></i>
                         <h4 class="mb-0 total-expenses-title">Total Expenses</h4>
                     </div>
+                    <div>
+                        <h4 style="font-size:30px; margin-top:20px;">₱ 00.00</h4>
+                        </div>
                 </div>
 
                 <!-- Total Orders Glass Card (Newly Added) -->
@@ -405,13 +424,23 @@
                         <i class="fas fa-shopping-cart orders-icon me-2"></i>
                         <h4 class="mb-0 total-orders-title">Total Orders</h4>
                    </div>
+                   <div>
+                        <h4 style="font-size:30px; margin-top:20px;">No Orders</h4>
+                        </div>
                </div>
 
                <div class="targetSales d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
                         <h4 class="mb-0 total-orders-title">Target Sales</h4>
                    </div>
+                   <div>
+                        <h4 style="font-size:30px; margin-top:20px;">₱ 00.00</h4>
+                        </div>
                </div>  
+
+               <div>
+                    <h5 class="compareWith">Compare with</h3>
+                </div>
                
                <div class="comparison d-flex flex-column align-items-start p-3 mb-4">
         <div class="d-flex justify-content-between">

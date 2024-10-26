@@ -58,7 +58,6 @@
     position: fixed;
     left: 213px;
     bottom: 221px;
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,6 +122,7 @@
         backdrop-filter: blur(20px);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
+        position: fixed;
        
     }
 
@@ -137,11 +137,11 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
+        width: 195px; /* Adjusted width */
         height: 250px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom:23px;
+        position: fixed;
+        left: 10px; /* Move the container 30px to the right */
+        top:7px;
        
     }
 
@@ -172,11 +172,11 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     color: white;
     margin: 10px;
-    max-width: 185px; /* Adjusted width */
+    width: 195px; /* Adjusted width */
     height: 250px; /* Set a specific height */
-    position: relative;
-    left: 115px; /* Move the container 30px to the right */
-    bottom: 540px; /* Move the container 30px to the right */
+    position: fixed;
+    right: 10px; /* Move the container 30px to the right */
+    top: 7px; /* Move the container 30px to the right */
 }
 
 
@@ -209,9 +209,9 @@
         margin: 10px;
         width: 600px; /* Adjusted width */
         height: 200px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom: 45px;
+        position: fixed;
+        left: 10px; /* Move the container 30px to the right */
+        bottom: -7px;
        
     }
    
@@ -238,35 +238,18 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        width: 338px; /* Adjusted width */
+        width: 350px; /* Adjusted width */
         height: 200px; /* Set a specific height */
-        position: relative;
-        
-        left:-37px;
-        bottom: 560px; /* Move the container 30px to the right */
+        position: fixed;
+        right:10px;
+        bottom: -7px; /* Move the container 30px to the right */
     }
 
-    /*Target Sales*/
-    .targetSales {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        color: white;
-        margin: 10px;
-        width: 390px; /* Adjusted width */
-        height: 120px; /* Set a specific height */
-        position: relative;
-        right: 650px; /* Move the container 30px to the right */
-        bottom: 420px; /* Move the container 30px to the right */
-    }
 
     /* footer here */
     .glassmorphic-footer {
-    position: relative;
-    bottom: 530px;
+        position: fixed;
+        bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
