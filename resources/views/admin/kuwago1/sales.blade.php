@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Dashboard</title>
+    <title>Sales Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -37,9 +37,9 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             color: white;
             margin: 10px;
-            max-width: 500px;
+            width: 590px;
             position: relative;
-            left: 360px;
+            left: 141px;
             bottom:40px;
             
         }
@@ -108,7 +108,7 @@
         color: white;
         margin: 10px;
         max-width: 185px; /* Adjusted width */
-        height: 150px; /* Set a specific height */
+        height: 250px; /* Set a specific height */
         position: relative;
         right: 650px; /* Move the container 30px to the right */
         bottom:23px;
@@ -143,10 +143,10 @@
     color: white;
     margin: 10px;
     max-width: 185px; /* Adjusted width */
-    height: 150px; /* Set a specific height */
+    height: 250px; /* Set a specific height */
     position: relative;
-    right: 445px; /* Move the container 30px to the right */
-    bottom: 390px; /* Move the container 30px to the right */
+    left: 115px; /* Move the container 30px to the right */
+    bottom: 540px; /* Move the container 30px to the right */
 }
 
 
@@ -177,20 +177,17 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
-        height: 150px; /* Set a specific height */
+        width: 600px; /* Adjusted width */
+        height: 200px; /* Set a specific height */
         position: relative;
         right: 650px; /* Move the container 30px to the right */
         bottom: 45px;
        
     }
-    .profit-icon{
-        font-size: 1.5rem; /* Set icon size */
-        color: #fff; /* Icon color */
-    }
+   
 
     .total-profit {
-        font-size: 25px; /* Font size for total amounts */
+        font-size: 20px; /* Font size for total amounts */
         font-weight: bold; /* Bold font for total amounts */
         color: #fff; /* White text color */
         margin-top: 10px; /* Add some height spacing above the total amounts */
@@ -211,11 +208,12 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         color: white;
         margin: 10px;
-        max-width: 185px; /* Adjusted width */
-        height: 150px; /* Set a specific height */
+        width: 338px; /* Adjusted width */
+        height: 200px; /* Set a specific height */
         position: relative;
-        right: 445px; /* Move the container 30px to the right */
-        bottom: 412px; /* Move the container 30px to the right */
+        
+        left:-37px;
+        bottom: 560px; /* Move the container 30px to the right */
     }
 
     /*Target Sales*/
@@ -238,7 +236,7 @@
     /* footer here */
     .glassmorphic-footer {
     position: relative;
-    bottom: 580px;
+    bottom: 530px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -332,21 +330,7 @@
 }
 
 /* Comparison Card */
-.comparison {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        color: white;
-        margin: 10px;
-        width: 525px; /* Adjusted width */
-        height: 160px; /* Set a specific height */
-        position: relative;
-        right: 225px; /* Move the container 30px to the right */
-        bottom: 610px; /* Move the container 30px to the right */
-    }
+
 
 
     /*left modal*/
@@ -369,7 +353,7 @@
                 <div class="glass-card">
                     <div class="card-body">
                         <!-- Combined Chart for Expenses, Sales, and Profit -->
-                        <canvas id="combinedChart" style="max-width: 100%; height: 300px;"></canvas>
+                        <canvas id="combinedChart" style="max-width: 100%; height: 250px;"></canvas>
                     </div>
                 </div>
             </div>
@@ -378,7 +362,6 @@
                 <!-- Total Sales Glass Card -->
                 <div class="totalSales d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
-                        <i class="fas fa-chart-line sales-icon me-2"></i>
                         <h4 class="mb-0 total-sales-title">Total Sales</h4>
                     </div>
                     <h2 class="total-sales">₱ {{ number_format($totalSales, 2) }}</h2>
@@ -387,110 +370,28 @@
                 <!-- Total Profit Glass Card -->
                 <div class="totalProfit d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
-                        <i class="fas fa-chart-line profit-icon me-2"></i>
-                        <h4 class="mb-0 total-profit-title">Total Profit</h4>
+                        <h4 class="mb-0 total-profit-title">Sales By Category</h4>
                     </div>
-                    <h2 class="total-profit">₱ {{ number_format($totalSales - $totalExpenses, 2) }}</h2>
                 </div>
 
                 <!-- Total Expenses Glass Card -->
                 <div class="totalExpenses d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
-                        <i class="fas fa-money-bill-wave expenses-icon me-2"></i>
-                        <h4 class="mb-0 total-expenses-title">Total Expenses</h4>
+                        <h4 class="mb-0 total-expenses-title">Least-selling Products</h4>
                     </div>
-                    <h2 class="total-expenses">₱ {{ number_format($totalExpenses, 2) }}</h2>
                 </div>
 
                 <!-- Total Orders Glass Card (Newly Added) -->
                 <div class="totalOrders d-flex flex-column align-items-start p-3 mb-4">
                     <div class="d-flex align-items-center mb-1">
-                        <i class="fas fa-shopping-cart orders-icon me-2"></i>
-                        <h4 class="mb-0 total-orders-title">Total Orders</h4>
+                        <!-- <i class="fas fa-shopping-cart orders-icon me-2"></i> -->
+                        <h4 class="mb-0 total-orders-title">Top-selling Products</h4>
                    </div>
                </div>
-
-               <div class="targetSales d-flex flex-column align-items-start p-3 mb-4">
-                    <div class="d-flex align-items-center mb-1">
-                        <h4 class="mb-0 total-orders-title">Target Sales</h4>
-                   </div>
-               </div>  
-               
-               <div class="comparison d-flex flex-column align-items-start p-3 mb-4">
-        <div class="d-flex justify-content-between">
-            <!-- Left Column -->
-            <div class="d-flex flex-column align-items-start me-3">
-        <div class="glass-bg">
-        <select id="dateFilterLeft" onchange="handleFilterChangeleft()">
-            <option value="thisweek" selected>This Week</option>
-            <option value="today">Today</option>
-            <option value="yesterday">Yesterday</option>
-            <option value="last3days">Last 3 Days</option>
-            <option value="last5days">Last 5 Days</option>
-            <option value="last7days">Last 7 Days</option>
-            <option value="lastweek">Last Week</option>
-            <option value="thismonth">This Month</option>
-            <option value="lastmonth">Last Month</option>
-            <option value="thisyear">This Year</option>
-            <option value="lastyear">Last Year</option>
-            <option value="overall">Overall</option>
-            <option value="custom">Custom</option>
-        </select>
-    </div>
-    <div class="mt-2">
-        <i class="fas fa-dollar-sign"></i> Total Profit:  ₱ 000,000
-    </div>
-    <div>
-        <i class="fas fa-chart-line"></i> Total Sales:  ₱ 000,000
-    </div>
-    <div>
-        <i class="fas fa-money-bill-wave"></i> Total Expenses: ₱ 000,000
-    </div>
-    <div>
-        <i class="fas fa-shopping-cart"></i> Total Orders:
-    </div>
-</div>
-
-            
-            <!-- Vertical Divider Line -->
-            <div style="border-left: 2px solid white; height: 100%; margin: 0 15px;"></div>
-
-            <!-- Right Column -->
-            <div class="d-flex flex-column align-items-start">
-                <select id="dateFilterRight" onchange="handleFilterChangeright()">
-                    <option value="thisweek" selected>This Week</option>
-                    <option value="today">Today</option>
-                    <option value="yesterday">Yesterday</option>
-                    <option value="last3days">Last 3 Days</option>
-                    <option value="last5days">Last 5 Days</option>
-                    <option value="last7days">Last 7 Days</option>
-                    <option value="lastweek">Last Week</option>
-                    <option value="thismonth">This Month</option>
-                    <option value="lastmonth">Last Month</option>
-                    <option value="thisyear">This Year</option>
-                    <option value="lastyear">Last Year</option>
-                    <option value="overall">Overall</option>
-                    <option value="custom">Custom</option>
-                </select>
-                <div class="mt-2">
-                    <i class="fas fa-dollar-sign"></i> Total Profit:  ₱ 000,000
-                </div>
-                <div>
-                    <i class="fas fa-chart-line"></i> Total Sales:  ₱ 000,000
-                </div>
-                <div>
-                    <i class="fas fa-money-bill-wave"></i> Total Expenses:  ₱ 000,000
-                </div>
-                <div>
-                    <i class="fas fa-shopping-cart"></i> Total Orders:
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
-    </div>
-</div>
 
 
 
@@ -525,7 +426,7 @@
 <div class="modal-bg" id="customDateModal">
     <div class="modal-content">
         <h5>Select Date Range</h5>
-        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
+        <form action="{{ route('admin.kuwago1.sales') }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="start_date" class="form-label text-white">Start Date:</label>
@@ -546,51 +447,7 @@
 </div>
 
 
-<div class="modal-bg" id="customDateModalLeft">
-    <div class="modal-content">
-        <h5>Select Date Range</h5>
-        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
-            @csrf
-            <div class="form-group mb-3">
-                <label for="start_date" class="form-label text-white">Start Date:</label>
-                <input type="date" id="start_date" name="start_date" class="form-control"
-                       value="{{ request('start_date', \Carbon\Carbon::now()->subDays(6)->toDateString()) }}" required>
-            </div>
-            <div class="form-group mb-3">
-                <label for="end_date" class="form-label text-white">End Date:</label>
-                <input type="date" id="end_date" name="end_date" class="form-control"
-                       value="{{ request('end_date', \Carbon\Carbon::now()->toDateString()) }}" required>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="button" onclick="closeModalleft()" class="btn btn-secondary me-2">Cancel</button>
-                <button type="submit" class="btn btn-primary">Generate Report</button>
-            </div>
-        </form>
-    </div>
-</div>
 
-<div class="modal-bg" id="customDateModalRight">
-    <div class="modal-content">
-        <h5>Select Date Range</h5>
-        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
-            @csrf
-            <div class="form-group mb-3">
-                <label for="start_date" class="form-label text-white">Start Date:</label>
-                <input type="date" id="start_date" name="start_date" class="form-control"
-                       value="{{ request('start_date', \Carbon\Carbon::now()->subDays(6)->toDateString()) }}" required>
-            </div>
-            <div class="form-group mb-3">
-                <label for="end_date" class="form-label text-white">End Date:</label>
-                <input type="date" id="end_date" name="end_date" class="form-control"
-                       value="{{ request('end_date', \Carbon\Carbon::now()->toDateString()) }}" required>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="button" onclick="closeModalright()" class="btn btn-secondary me-2">Cancel</button>
-                <button type="submit" class="btn btn-primary">Generate Report</button>
-            </div>
-        </form>
-    </div>
-</div>
 
   <!-- for chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -626,79 +483,28 @@
 </script>
 
 
-<script>
-      function handleFilterChangeleft() {
-        const filter = document.getElementById('dateFilterLeft').value;
-        if (filter === 'custom') {
-            document.getElementById('customDateModalLeft').style.display = 'flex'; 
-        }
-    }
-
-    function handleFilterChangeright() {
-        const filter = document.getElementById('dateFilterRight').value;
-        if (filter === 'custom') {
-            document.getElementById('customDateModalRight').style.display = 'flex'; 
-        }
-    }
-
-    function closeModalleft() {
-        document.getElementById('customDateModalLeft').style.display = 'none';
-    }
-
-    function closeModalright() {
-        document.getElementById('customDateModalRight').style.display = 'none';
-    }
-</script>
-
-
 
 <script>
-    const expenses = @json($expenses ?? []);
-    const sales = @json($sales ?? []);
-    
-    if (expenses.length > 0 || sales.length > 0) {
+    const sales = @json($sales ?? []); // Keep only sales data
+
+    if (sales.length > 0) {
         const ctx = document.getElementById('combinedChart').getContext('2d');
-        const labels = [...new Set([
-            ...expenses.map(expense => new Date(expense.date).toLocaleDateString()),
-            ...sales.map(sale => new Date(sale.date).toLocaleDateString())
-        ])];
+        
+        // Extract labels from sales data
+        const labels = sales.map(sale => new Date(sale.date).toLocaleDateString());
 
-        const expenseData = labels.map(label => {
-            const expense = expenses.find(exp => new Date(exp.date).toLocaleDateString() === label);
-            return expense ? parseFloat(expense.total_expenses) : 0;
-        });
-
-        const salesData = labels.map(label => {
-            const sale = sales.find(s => new Date(s.date).toLocaleDateString() === label);
-            return sale ? parseFloat(sale.total_sales) : 0;
-        });
-
-        // Calculate profit
-        const profitData = salesData.map((sale, index) => {
-            return sale - expenseData[index];
-        });
+        // Extract sales data
+        const salesData = sales.map(sale => parseFloat(sale.total_sales));
 
         const combinedChart = new Chart(ctx, {
-            type: 'bar', // Change to 'bar' for vertical grouped bar graph
+            type: 'line', // Change to 'bar' for vertical grouped bar graph
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Total Expenses',
-                    data: expenseData,
-                    backgroundColor: 'rgba(255, 99, 132, 0.7)', // Bar color for expenses
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1,
-                }, {
                     label: 'Total Sales',
                     data: salesData,
                     backgroundColor: 'rgba(54, 162, 235, 0.7)', // Bar color for sales
                     borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                }, {
-                    label: 'Profit',
-                    data: profitData,
-                    backgroundColor: 'rgba(75, 192, 192, 0.7)', // Bar color for profit
-                    borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
                 }]
             },
@@ -721,5 +527,6 @@
         });
     }
 </script>
+
 </body>
 </html>

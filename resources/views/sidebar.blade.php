@@ -88,30 +88,40 @@
 <div id="sidebar" class="glass-sidebar collapsed">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="{{route('admin.kuwago1.main')}}" class="nav-link active"><i class="fa fa-th-large"></i><span>General</span></a>
+            <a href="{{route('admin.kuwago1.main')}}" class="nav-link {{ request()->routeIs('admin.kuwago1.main') ? 'active' : '' }}">
+                <i class="fa fa-th-large"></i><span>General</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fa fa-chart-line"></i><span>Sales</span></a>
+            <a href="{{route('admin.kuwago1.sales')}}" class="nav-link {{ request()->routeIs('admin.kuwago1.sales') ? 'active' : '' }}">
+                <i class="fa fa-chart-line"></i><span>Sales</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fa fa-wallet"></i><span>Expenses</span></a>
+            <a href="#" class="nav-link {{ request()->routeIs('expenses.route.name') ? 'active' : '' }}">
+                <i class="fa fa-wallet"></i><span>Expenses</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fa fa-tags"></i><span>Promos</span></a>
+            <a href="#" class="nav-link {{ request()->routeIs('promos.route.name') ? 'active' : '' }}">
+                <i class="fa fa-tags"></i><span>Promos</span>
+            </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link"><i class="fa fa-star"></i><span>Feedbacks</span></a>
+            <a href="#" class="nav-link {{ request()->routeIs('feedbacks.route.name') ? 'active' : '' }}">
+                <i class="fa fa-star"></i><span>Feedbacks</span>
+            </a>
         </li>
     </ul>
     <button id="toggleSidebar" class="btn btn-light btn-sm mt-3">
-        <i class="fas fa-bars"></i> <!-- Changed toggle icon -->
+        <i class="fas fa-bars"></i>
     </button>
 </div>
+
 
 <script>
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggleSidebar');
-    const navLinks = document.querySelectorAll('.nav-link');
 
     toggleBtn.addEventListener('click', () => {
         sidebar.classList.toggle('expanded');
@@ -119,13 +129,7 @@
         document.body.classList.toggle('expanded-content');
     });
 
-    // Active icon toggle
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.forEach(item => item.classList.remove('active'));
-            link.classList.add('active');
-        });
-    });
+   
 </script>
 </body>
 </html>

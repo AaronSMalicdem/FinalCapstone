@@ -61,5 +61,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 });
 Route::match(['get', 'post'], '/admin/kuwago1/main', [ExpensesReportController::class, 'index'])->name('admin.kuwago1.main');
+Route::match(['get', 'post'], '/admin/kuwago1/sales', [ExpensesReportController::class, 'sales'])->name('admin.kuwago1.sales');
+
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');

@@ -3,98 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Filter</title>
-    <!-- Add any required CSS (like Bootstrap or custom styles) -->
+    <title>Document</title>
+
 </head>
-<body>
-
-<!-- partials/footer.blade.php -->
-<footer class="glassmorphic-footer">
-    <div class="container d-flex justify-content-center align-items-center py-3">
-        <!-- Dropdown for filters -->
-        <div class="dropdown">
-            <button class="btn btn-outline-light dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Filter Report
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                <li><a class="dropdown-item" href="#" onclick="updateChart('today')">Today</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('yesterday')">Yesterday</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('last_3_days')">Last 3 Days</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('last_5_days')">Last 5 Days</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('last_7_days')">Last 7 Days</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('this_week')">This Week</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('last_week')">Last Week</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('this_month')">This Month</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('last_month')">Last Month</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('this_year')">This Year</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('last_year')">Last Year</a></li>
-                <li><a class="dropdown-item" href="#" onclick="updateChart('overall')">Overall</a></li>
-                <li><a class="dropdown-item" href="#" onclick="showCustomDate()">Custom</a></li>
-            </ul>
-        </div>
-
-        <!-- Custom Date Range inputs -->
-        <div class="d-none" id="customDateRange" style="margin-left: 20px;">
-            <input type="date" id="customStartDate" class="form-control me-2" placeholder="Start Date">
-            <input type="date" id="customEndDate" class="form-control me-2" placeholder="End Date">
-            <button class="btn btn-primary" onclick="updateChart('custom')">Apply</button>
-        </div>
-    </div>
-</footer>
-
-<!-- Glassmorphic Styling -->
 <style>
-    .glassmorphic-footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        backdrop-filter: blur(10px) saturate(200%);
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        z-index: 1000;
-    }
-    .dropdown-menu {
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-    .dropdown-item {
-        color: white;
-    }
-    .dropdown-item:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
+     /* footer here */
+     .glassmorphic-footer {
+    position: relative;
+    bottom: 580px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    z-index: 10;
+}
+
+.glassmorphic-footer button,
+.glassmorphic-footer select {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin: 0 10px;
+}
+
+.glassmorphic-footer select {
+    padding: 8px 12px;
+    background: transparent; /* Make the dropdown background transparent */
+    color: black; /* Ensure the text color is white */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Center the dropdown text and add a line underneath */
+.glassmorphic-footer .dropdown {
+    text-align: center; /* Center the text */
+    position: relative; /* Position relative for the line */
+}
+
+.glassmorphic-footer .dropdown::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #fff; /* Line color */
+    width: 100%; /* Full width */
+    position: absolute;
+    bottom: -5px; /* Position it below the text */
+    left: 0;
+}
+
+.glassmorphic-footer .filter-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    right: 40px;
+}
+
+
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    color: #fff; /* Change text color to white */
+}
+
+.modal-content h5 {
+    margin-bottom: 20px;
+}
+
+.modal-content .form-label {
+    color: #fff; /* Make the label color white */
+}
+
+.modal-content input[type="date"] {
+    color: #000; /* Set input text color to black for visibility */
+}
+
 </style>
+<body>
+<div class="glassmorphic-footer">
+    <!-- Generate PDF Button -->
+    <button onclick="generatePDF()" class="btn btn-outline-light">Generate PDF</button>
 
-<!-- Script to Handle Date Range Selection and Filtering -->
+    <!-- Filter Dropdown with Custom Date Option -->
+    <div class="dropdown">
+        <select id="dateFilter" onchange="handleFilterChange()" class="dropdownforModal">
+            <option value="today">Today</option>
+            <option value="yesterday">Yesterday</option>
+            <option value="last3days">Last 3 Days</option>
+            <option value="last5days">Last 5 Days</option>
+            <option value="last7days">Last 7 Days</option>
+            <option value="thisweek">This Week</option>
+            <option value="lastweek">Last Week</option>
+            <option value="thismonth">This Month</option>
+            <option value="lastmonth">Last Month</option>
+            <option value="thisyear">This Year</option>
+            <option value="lastyear">Last Year</option>
+            <option value="overall">Overall</option>
+            <option value="custom">Custom</option>
+        </select>
+    </div>
+
+    <!-- Filter Icon to Refresh the Chart -->
+    <i class="fas fa-filter filter-icon" onclick="updateChartWithFilter()"></i>
+</div>
+
+<!-- Custom Date Selection Modal -->
+<div class="modal-bg" id="customDateModal">
+    <div class="modal-content">
+        <h5>Select Date Range</h5>
+        <form action="{{ route('admin.kuwago1.main') }}" method="POST">
+            @csrf
+            <div class="form-group mb-3">
+                <label for="start_date" class="form-label text-white">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" class="form-control"
+                       value="{{ request('start_date', \Carbon\Carbon::now()->subDays(6)->toDateString()) }}" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="end_date" class="form-label text-white">End Date:</label>
+                <input type="date" id="end_date" name="end_date" class="form-control"
+                       value="{{ request('end_date', \Carbon\Carbon::now()->toDateString()) }}" required>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" onclick="closeModal()" class="btn btn-secondary me-2">Cancel</button>
+                <button type="submit" class="btn btn-primary">Generate Report</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 <script>
-    function showCustomDate() {
-        // Show the custom date range inputs
-        document.getElementById('customDateRange').classList.remove('d-none');
+    function generatePDF() {
+        // Implement PDF generation logic here
+        alert("PDF Generated!"); // Placeholder
     }
 
-    function updateChart(filter) {
-        // Fetch and update the chart data according to the selected filter.
-        console.log(`Filter selected: ${filter}`);
-
-        // If custom filter is selected, get custom date range values
+    function handleFilterChange() {
+        const filter = document.getElementById('dateFilter').value;
         if (filter === 'custom') {
-            const startDate = document.getElementById('customStartDate').value;
-            const endDate = document.getElementById('customEndDate').value;
-
-            if (startDate && endDate) {
-                console.log(`Custom Date Range: ${startDate} - ${endDate}`);
-                // You can send this date range via AJAX to fetch updated data
-                // Example AJAX call:
-                // fetch('/api/updateChart', { method: 'POST', body: JSON.stringify({ start_date: startDate, end_date: endDate }) });
-            } else {
-                console.error('Both start and end dates are required for a custom range.');
-            }
+            document.getElementById('customDateModal').style.display = 'flex';
         }
+    }
 
-        // You can replace the console logs with actual AJAX or other logic to update your report/chart.
+    function updateChartWithFilter() {
+        const filter = document.getElementById('dateFilter').value;
+        // Implement chart update logic based on filter selection
+        alert("Chart Updated with filter: " + filter); // Placeholder
+    }
+
+    function closeModal() {
+        document.getElementById('customDateModal').style.display = 'none';
     }
 </script>
 
-<!-- Add any required JS libraries like Bootstrap JS, etc. -->
 </body>
 </html>
