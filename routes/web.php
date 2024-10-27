@@ -65,10 +65,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 });
 
 
+//KUWAG01 BLADES
 //this is for chart views
 Route::match(['get', 'post'], '/admin/kuwago1/main', [ExpensesReportController::class, 'index'])->name('admin.kuwago1.main');
 Route::match(['get', 'post'], '/admin/kuwago1/sales', [ExpensesReportController::class, 'sales'])->name('admin.kuwago1.sales');
 Route::match(['get', 'post'], '/admin/kuwago1/expenses', [ExpensesReportController::class, 'expenses'])->name('admin.kuwago1.expenses');
+Route::get('/admin/kuwago1/promos', function () {
+    return view('admin.kuwago1.promos'); // Adjust to your view path
+})->name('admin.kuwago1.promos');
 
 
 //this is for profile update

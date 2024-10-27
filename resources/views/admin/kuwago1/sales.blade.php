@@ -56,7 +56,7 @@
     width: 550px; /* Set a fixed width */
     height: 250px; /* Set a fixed height */
     position: fixed;
-    left: 213px;
+    left: 214px;
     bottom: 221px;
     display: flex;
     align-items: center;
@@ -252,7 +252,7 @@
         bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 750px;
     padding: 15px;
     display: flex;
     justify-content: space-between;

@@ -155,5 +155,21 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    // Update the dropdown label based on the selected item
+    function setDropdownLabel(label) {
+        document.getElementById("dropdownLabel").innerText = label;
+        localStorage.setItem("selectedDropdownLabel", label); // Store label
+    }
+
+    // Retrieve and set the label on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        const savedLabel = localStorage.getItem("selectedDropdownLabel");
+        if (savedLabel) {
+            document.getElementById("dropdownLabel").innerText = savedLabel;
+        }
+    });
+</script>
 </body>
 </html>

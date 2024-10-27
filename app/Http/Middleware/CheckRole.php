@@ -44,6 +44,8 @@ class CheckRole
             'admin.users.update',
             'admin.users.destroy',
             'admin.kuwago1.main',
+            'admin.kuwago1.sales',
+            'admin.kuwago1.expenses',
         ])) {
             return response()->view('errors.access-denied', [], 403); // Show Access Denied page
         }

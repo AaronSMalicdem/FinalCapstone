@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            /* overflow:hidden; */
+            overflow:hidden;
            
         }
 
@@ -330,9 +330,6 @@
     font-weight:bold;
 
 }
-
-   
-
 
     </style>
 </head>

@@ -103,7 +103,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->routeIs('promos.route.name') ? 'active' : '' }}">
+            <a href="{{route('admin.kuwago1.promos')}}" class="nav-link {{ request()->routeIs('admin.kuwago1.promos') ? 'active' : '' }}">
                 <i class="fa fa-tags"></i><span>Promos</span>
             </a>
         </li>
